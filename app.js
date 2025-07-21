@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Sidebar toggle functionality with overlay
     const sidebar = document.getElementById('sidebar');
     const content = document.getElementById('content');
     const sidebarCollapse = document.getElementById('sidebarCollapse');
@@ -24,8 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
     sidebarOverlay.addEventListener('click', function() {
         toggleSidebar();
     });
-    
-    // Close sidebar when clicking on nav links (mobile)
     const navLinks = document.querySelectorAll('#sidebar ul li a');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
@@ -34,16 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
-    // Set current date in date inputs
     const today = new Date().toISOString().split('T')[0];
     document.querySelectorAll('input[type="date"]').forEach(input => {
         if (!input.value) {
             input.value = today;
         }
     });
-    
-    // Date range selector
     const dateRange = document.getElementById('dateRange');
     if (dateRange) {
         dateRange.addEventListener('change', function() {
@@ -57,8 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
             dateRange.dispatchEvent(new Event('change'));
         }
     }
-    
-    // Form validation example
     const forms = document.querySelectorAll('.needs-validation');
     Array.from(forms).forEach(form => {
         form.addEventListener('submit', function(event) {
@@ -69,20 +60,14 @@ document.addEventListener('DOMContentLoaded', function() {
             form.classList.add('was-validated');
         }, false);
     });
-    
-    // Tooltip initialization
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.map(function(tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
-    
-    // Popover initialization
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
     popoverTriggerList.map(function(popoverTriggerEl) {
         return new bootstrap.Popover(popoverTriggerEl);
     });
-    
-    // Handle window resize
     function handleResize() {
         if (window.innerWidth >= 992) {
             sidebar.classList.remove('active');
@@ -93,5 +78,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     window.addEventListener('resize', handleResize);
-    handleResize(); // Run once on load
+    handleResize();
 });
